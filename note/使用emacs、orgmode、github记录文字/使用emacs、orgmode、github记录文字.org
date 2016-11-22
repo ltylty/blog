@@ -1,0 +1,4 @@
+    第三方博客是个很好的选择，也不需要自己维护，如果不装逼是个很好的选择。但是插入图片太麻烦，需要一个一个地从本地上传。所以自己搭建博客，先后尝试过hexo、org-page。但最终选择直接在github上创建一个repository记录文字。
+    hexo很漂亮也非常好用，但是用markdown格式来发布博客。我已经习惯org-mode，不想用markdown。虽然org格式可以导出为markdown格式，但稍显麻烦。
+    org-page直接支持org文件，但是使用的人很少，文档不够详细，配置起来也麻烦。
+    想到github的readme支持org文件，于是创建一个repository,在readme文件上写目录，内容都放到note文件夹下。在本地写完后直接push就ok了。
