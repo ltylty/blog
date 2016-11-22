@@ -1,0 +1,70 @@
+#+OPTIONS: toc:nil
+学习js时看到闭包这个这个特性，初次接触觉得别扭。后来才发现别扭的原因是我在用命令式编程的思维看待函数式编程语句。函数式编程简直在我的思维里开启了一个新世界。原来代码还可以这么写！
+这两个链接对函数式编程作了很好的介绍[[http://coolshell.cn/articles/10822.html%0A]] https://www.zhihu.com/question/28292740 ，我写一些觉得有意思的部分。
+* 函数式编程的思维方式
+直接举例子说明，
+
+用命令式编程反转字符串
+#+BEGIN_SRC js
+var str = 'abc';
+var newStr = '';
+for(var i = str.length;i>=0;i--){
+    newStr += str[i];
+}
+#+END_SRC
+
+用函数式编程反转字符串
+#+BEGIN_SRC js
+var str = "abc";
+
+function reverse(str){
+	if(str.length == 0){
+		return str;
+	}else{
+		return str.charAt(str.length-1) + reverse(str.substring(0,str.length-1));
+	}
+}
+
+var newStr = reverse(str);
+#+END_SRC
+
+在命令式编程中，通过不断地改变newStr的状态来达到目的。但是函数式编程中通过反复地调用方法来得到最终想要的结果。
+* 管道与函数式编程
+在Linux命令行中使用管道时，经常萌生一个想法，如果能再操作的时候改变一下命令结果的值再传递给下一个命令多好。现在算是明白了，管道和函数式编程的思维是一样的，没有变量的概念，状态不允许改变。不断地通过操作来得到最终的结果。
+awk -F"->" '/request http url ->/ {print $2 }' catalina.out | sort | uniq > test 
+这条命令的伪代码
+test = uniq(sort(awk('catalina.out')))
+* 函数式编程与面向对象
+函数式编程不会改变数据的状态，而是不断地通过函数产生新的数据。但是在闭包中允许保留与改变数据的状态。
+#+BEGIN_SRC js
+function Person(var str){
+    this.name = str;
+    this.description = function(){
+        alert("my name is "+this.name);
+    }
+}
+
+var zhang = new Person("zhang");
+var li = new Person("li");
+#+END_SRC
+这段代码就是利用闭包的特性来实现面向对象。li和zhang这两个对象中的name属性不会相互影响，并且name的状态可以保留与改变。
+如果用面向对象的写法就是这样
+#+BEGIN_SRC java
+class Person(){
+
+    private String name;
+
+    public Person(String name){
+        this.name = name;
+    }
+
+    function description(){
+        System.out.println(this.name);
+    }
+}
+
+Person zhang = new Person("zhang");
+Person zhang = new Person("zhang");
+#+END_SRC
+* 设计模式与函数式编程
+  待续
