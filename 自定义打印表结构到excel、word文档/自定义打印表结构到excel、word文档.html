@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-11-17 周四 17:53 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title></title>
+<meta name="generator" content="Org mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<p>
+虽然navicat、sql yog等工具都支持将表结构打印出来，但是没办法自定义、而且不能直接在word、excel中使用。但是通过使用sql、存储过程、emacs可以满足这个需求，而且非常灵活。
+</p>
+<div id="outline-container-orgcb3707b" class="outline-2">
+<h2 id="orgcb3707b"><span class="section-number-2">1</span> 打印所有的表名和描述</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+直接用sql组织想要的格式，
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">select</span> <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span> <span style="color: #4f97d7; font-weight: bold;">as</span> &#34920;&#21517;,TABLE_COMMENT <span style="color: #4f97d7; font-weight: bold;">as</span> &#25551;&#36848;
+ <span style="color: #4f97d7; font-weight: bold;">from</span> information_schema.tables <span style="color: #4f97d7; font-weight: bold;">WHERE</span> TABLE_SCHEMA=<span style="color: #2d9574;">'drgo'</span>;
+</pre>
+</div>
+<p>
+效果如图,直接在navicat上导出成想要的文档格式即可
+</p>
+
+
+<div class="figure">
+<p><img src="1.png" alt="1.png" />
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0199cbb" class="outline-2">
+<h2 id="org0199cbb"><span class="section-number-2">2</span> 打印所有表的字段以及字段的基本属性</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+这种要复杂一些，最先想到的还是用sql来组织格式。
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">SELECT</span> <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span>,
+  ORDINAL_POSITION,
+  <span style="color: #4f97d7; font-weight: bold;">COLUMN_NAME</span>,
+  COLUMN_COMMENT,
+  COLUMN_TYPE,
+  IS_NULLABLE,
+  COLUMN_DEFAULT
+<span style="color: #4f97d7; font-weight: bold;">FROM</span>
+  `information_schema`.`columns`
+<span style="color: #4f97d7; font-weight: bold;">WHERE</span>
+  TABLE_SCHEMA = <span style="color: #2d9574;">'drgo'</span>
+<span style="color: #4f97d7; font-weight: bold;">AND</span> <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span> <span style="color: #4f97d7; font-weight: bold;">IN</span> <span style="color: #4f97d7;">(</span>
+  <span style="color: #4f97d7; font-weight: bold;">SELECT</span>
+    <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span>
+  <span style="color: #4f97d7; font-weight: bold;">FROM</span>
+    information_schema. TABLES
+  <span style="color: #4f97d7; font-weight: bold;">WHERE</span>
+    TABLE_SCHEMA = <span style="color: #2d9574;">'drgo'</span>
+<span style="color: #4f97d7;">)</span>;
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="2.png" alt="2.png" />
+</p>
+</div>
+
+<p>
+这样导出到文档中显示效果不好，表与表中没有间隔，而且表名这一列很冗余。于是写了一个存储过程
+</p>
+<div class="org-src-container">
+<pre class="src src-sql"><span style="color: #4f97d7; font-weight: bold;">BEGIN</span>
+ <span style="color: #4f97d7; font-weight: bold;">DECLARE</span> t_name <span style="color: #ce537a; font-weight: bold;">VARCHAR</span> <span style="color: #4f97d7;">(</span><span style="color: #a45bad;">60</span><span style="color: #4f97d7;">)</span>;
+ <span style="color: #4f97d7; font-weight: bold;">DECLARE</span> done <span style="color: #ce537a; font-weight: bold;">INT</span> <span style="color: #4f97d7; font-weight: bold;">DEFAULT</span> <span style="color: #a45bad;">0</span>;
+ #&#22768;&#26126;&#28216;&#26631;<span style="color: #4f97d7; font-weight: bold;">cursor_name</span>
+  <span style="color: #4f97d7; font-weight: bold;">DECLARE</span> <span style="color: #4f97d7; font-weight: bold;">cursor_name</span> <span style="color: #4f97d7; font-weight: bold;">CURSOR</span> <span style="color: #4f97d7; font-weight: bold;">FOR</span>
+ <span style="color: #4f97d7; font-weight: bold;">SELECT</span>
+   <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span>
+ <span style="color: #4f97d7; font-weight: bold;">FROM</span>
+   information_schema.tables
+ <span style="color: #4f97d7; font-weight: bold;">WHERE</span> TABLE_SCHEMA = <span style="color: #2d9574;">'drgo'</span>
+   <span style="color: #4f97d7; font-weight: bold;">AND</span> <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span> <span style="color: #4f97d7; font-weight: bold;">NOT</span> <span style="color: #4f97d7; font-weight: bold;">LIKE</span> <span style="color: #2d9574;">'t_%'</span>;
+ #&#35774;&#32622;&#19968;&#20010;&#32456;&#27490;&#26631;&#35760;   
+  <span style="color: #4f97d7; font-weight: bold;">DECLARE</span> <span style="color: #4f97d7; font-weight: bold;">CONTINUE</span> HANDLER <span style="color: #4f97d7; font-weight: bold;">FOR</span> <span style="color: #4f97d7; font-weight: bold;">SQLSTATE</span> <span style="color: #2d9574;">'02000'</span> <span style="color: #4f97d7; font-weight: bold;">SET</span> done = <span style="color: #a45bad;">1</span>;
+ #&#25171;&#24320;&#28216;&#26631;  
+  <span style="color: #4f97d7; font-weight: bold;">OPEN</span> <span style="color: #4f97d7; font-weight: bold;">cursor_name</span>;
+ #&#33719;&#21462;&#28216;&#26631;&#24403;&#21069;&#25351;&#38024;&#30340;&#35760;&#24405;&#65292;&#35835;&#21462;&#19968;&#34892;&#25968;&#25454;&#24182;&#20256;&#32473;&#21464;&#37327;a,b  
+  <span style="color: #4f97d7; font-weight: bold;">FETCH</span> <span style="color: #4f97d7; font-weight: bold;">cursor_name</span> <span style="color: #4f97d7; font-weight: bold;">INTO</span> t_name;
+ #&#24320;&#22987;&#24490;&#29615;&#65292;&#21028;&#26029;&#26159;&#21542;&#28216;&#26631;&#24050;&#32463;&#21040;&#36798;&#20102;&#26368;&#21518;&#20316;&#20026;&#24490;&#29615;&#26465;&#20214;   
+  REPEAT
+   <span style="color: #4f97d7; font-weight: bold;">SELECT</span>
+     t_name <span style="color: #4f97d7; font-weight: bold;">AS</span> &#34920;&#21517;;
+   <span style="color: #2aa1ae; background-color: #292e34;">-- SELECT ORDINAL_POSITION,COLUMN_NAME,COLUMN_COMMENT,COLUMN_TYPE,IS_NULLABLE,COLUMN_DEFAULT  </span>
+    <span style="color: #4f97d7; font-weight: bold;">SELECT</span>
+     <span style="color: #2aa1ae; background-color: #292e34;">-- TABLE_NAME as &#34920;&#21517;,</span>
+      ORDINAL_POSITION <span style="color: #4f97d7; font-weight: bold;">AS</span> &#24207;&#21495;,
+     <span style="color: #4f97d7; font-weight: bold;">COLUMN_NAME</span> <span style="color: #4f97d7; font-weight: bold;">AS</span> &#26639;&#20301;&#21517;&#31216;,
+     COLUMN_COMMENT <span style="color: #4f97d7; font-weight: bold;">AS</span> &#26639;&#20301;&#25551;&#36848;,
+     COLUMN_TYPE <span style="color: #4f97d7; font-weight: bold;">AS</span> &#26639;&#20301;&#31867;&#22411;,
+     IS_NULLABLE <span style="color: #4f97d7; font-weight: bold;">AS</span> &#20801;&#35768;&#31354;,
+     COLUMN_DEFAULT <span style="color: #4f97d7; font-weight: bold;">AS</span> &#32570;&#30465;&#20540;
+   <span style="color: #4f97d7; font-weight: bold;">FROM</span>
+     `information_schema`.`columns`
+   <span style="color: #4f97d7; font-weight: bold;">WHERE</span> <span style="color: #4f97d7; font-weight: bold;">TABLE_NAME</span> = t_name
+     <span style="color: #4f97d7; font-weight: bold;">AND</span> TABLE_SCHEMA = <span style="color: #2d9574;">'drgo'</span>;
+   <span style="color: #4f97d7; font-weight: bold;">FETCH</span> <span style="color: #4f97d7; font-weight: bold;">cursor_name</span> <span style="color: #4f97d7; font-weight: bold;">INTO</span> t_name;
+   UNTIL done = <span style="color: #a45bad;">1</span>
+ <span style="color: #4f97d7; font-weight: bold;">END</span> REPEAT;
+ #&#20851;&#38381;&#28216;&#26631;  
+  <span style="color: #4f97d7; font-weight: bold;">CLOSE</span> <span style="color: #4f97d7; font-weight: bold;">cursor_name</span>;
+ #&#35821;&#21477;&#25191;&#34892;&#32467;&#26463;  
+<span style="color: #4f97d7; font-weight: bold;">END</span> $$
+</pre>
+</div>
+
+<div class="figure">
+<p><img src="3.png" alt="3.png" />
+</p>
+</div>
+
+<p>
+效果不错，结构清晰，层次分明。但是怎么把文本格式用到excel和world上呢？接下来该emacs出场了。主要用到了emacs的org mode和multiple-cursors。直接看效果
+</p>
+
+<p>
+<img src="4.gif" alt="4.gif" />
+编辑之后得到的org文件是这样的。
+</p>
+<pre class="example">
+#  #+OPTIONS: ^:nil _ 用来禁用_转义，#+CAPTION: 用来设置表头
+#+OPTIONS: ^:nil _
+
+#+CAPTION: additionalplan_publish_count 
+| 序号 | 栏位名称         | 栏位描述                 | 栏位类型    | 允许空 | 缺省值 |
++------+------------------+--------------------------+-------------+--------+--------+
+|    1 | test_activity_id | 每次考试对应的activityId | varchar(32) | NO     | NULL   |
+|    2 | exam_activity_id | 考试的主activityId       | varchar(32) | NO     | NULL   |
+|    3 | user_id          | 用户id                   | varchar(32) | NO     | NULL   |
+|    4 | count            | 次数                     | int(11)     | YES    | NULL   |
++------+------------------+--------------------------+-------------+--------+--------+
+
+#+CAPTION: anaytics_leaderboard_data 
+| 序号 | 栏位名称          | 栏位描述                                                   | 栏位类型     | 允许空 | 缺省值 |
++------+-------------------+------------------------------------------------------------+--------------+--------+--------+
+|    1 | data_code         | 群組代碼/群組名稱/學生ID/課程ID/考卷ID                     | varchar(30)  | NO     | NULL   |
+|    2 | data_name         | 群組名稱/學校名稱/學生姓名/課程名稱/考卷名稱               | varchar(100) | NO     | NULL   |
+|    3 | data_type         | 1:群組排行  2:學校排行  3:個人排行  4:影片排名  5:習題排名 | varchar(2)   | NO     | NULL   |
+|    4 | school_name       | 學生學校(for 個人排名)                                     | varchar(30)  | YES    | NULL   |
+|    5 | group_user_count  | 群組人數/學校人數(for群組排名/學校排名)                    | varchar(10)  | YES    | NULL   |
+|    6 | movie_count       | 影片觀看次數                                               | varchar(10)  | YES    | NULL   |
+|    7 | movie_user_count  | 影片觀看人數                                               | varchar(10)  | YES    | NULL   |
+|    8 | movie_total_time  | 影片觀看時間                                               | varchar(30)  | YES    | NULL   |
+|    9 | avg_movie_time    | 平均影片觀看時間                                           | varchar(30)  | YES    | NULL   |
+|   10 | question_qty      | 試卷考題題數(for習題排名)                                  | varchar(10)  | YES    | NULL   |
+|   11 | exam_full_score   | 試卷考題滿分(for習題排名)                                  | varchar(10)  | YES    | NULL   |
+|   12 | answer_score      | 答題總分                                                   | varchar(30)  | YES    | NULL   |
+|   13 | answer_count      | 答題次數                                                   | varchar(10)  | YES    | NULL   |
+|   14 | answer_user_count | 答題人數                                                   | varchar(10)  | YES    | NULL   |
+|   15 | answer_correct    | 答對次數                                                   | varchar(10)  | YES    | NULL   |
+|   16 | answer_wrong      | 答錯次數                                                   | varchar(10)  | YES    | NULL   |
+|   17 | score_standard    | 分數標準差                                                 | varchar(10)  | YES    | NULL   |
+|   18 | remark            | 備註                                                       | varchar(500) | YES    | NULL   |
+|   19 | create_time       | 建立時間                                                   | datetime     | NO     | NULL   |
+|   20 | update_time       | 修改時間                                                   | datetime     | YES    | NULL   |
++------+-------------------+------------------------------------------------------------+--------------+--------+--------+
+</pre>
+<p>
+MySQL在控制台中的执行结果正好就是emacs中org mode的表格，然后再用multiple-cursors多光标编辑裁剪一下，最后导出成html文件。WPS可以直接打开html文件，最终效果非常好。
+</p>
+
+
+<div class="figure">
+<p><img src="5.png" alt="5.png" />
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2016-11-17 周四 17:53</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
