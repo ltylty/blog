@@ -1,3 +1,1 @@
-git add -A
-git commit -m 'autoCommit'
-git push -u origin master
+git add -A && git commit -m 'autoCommit' && git push -u origin master
