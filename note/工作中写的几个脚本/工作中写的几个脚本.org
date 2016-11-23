@@ -55,7 +55,7 @@ done
 #+END_SRC
 * 通过日志抓取项目中调用的接口地址和参数
 调用接口时日志格式如下：
-#+BEGIN_QUOTE
+#+BEGIN_SRC 
 2016-10-18 14:58:01,062 INFO [com.wistron.swpc.wh.edu.http.connect.AbstractHttpService] - <request http url -> http://10.50.147.105:8080/notification//cloudservice/notification/count.so^M
 request params:^M
 param name:recipient,param value:GRS2O0000000000000075^M
@@ -63,7 +63,7 @@ param name:version,param value:5.0^M
 param name:appKey,param value:wiedu_application_key^M
 param name:sign,param value:E7F258659EDE53059717926D86A9A1AA7F03535C^M
 >
-#+END_QUOTE
+#+END_SRC
 通过如下命令可以抓取接口调用地址，但是不能拿到参数。
 #+BEGIN_SRC sh
 awk -F"->" '/request http url ->/ {print $2 }' catalina.out | sort | uniq  
@@ -102,7 +102,7 @@ with open('hello','w',encoding="utf8") as hello:
 
 #+END_SRC
 最终效果
-#+BEGIN_QUOTE
+#+BEGIN_SRC 
 http://10.50.147.105:8080/accountservice//cloudservice/api/credits/recharge/log/show.sorequest params:
 param name:fromUserId,param value:
 param name:toUserId,param value:287XB0000000000000156
@@ -121,4 +121,4 @@ http://10.50.147.105:8080/accountservice//cloudservice/group/create.sorequest pa
 param name:data,param value:<?xml version="1.0" encoding="utf-8"?><group id="" groupCode="" name="6666" creator="287XB0000000000000154" attr1="0" attr2="" appId="Drgo_App"></group>
 param name:appKey,param value:test_key
 param name:sign,param value:E719A541B5C4C6C7F87932F4D94E2BB177FA290E
-#+END_QUOTE
+#+END_SRC
