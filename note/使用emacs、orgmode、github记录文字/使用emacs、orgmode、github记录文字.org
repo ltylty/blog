@@ -4,4 +4,4 @@ hexo很漂亮也非常好用，但是用markdown格式来发布博客。已经�
 
 org-page直接支持org文件，但是使用的人很少，文档不够详细，配置起来也麻烦。
 
-想到github的readme支持org文件，于是创建一个repository,在readme文件上写目录，内容都放到note文件夹下。在本地写完后直接push就ok了,简单方便。具体方法git clone git@github.com:ltylty/blog.git
+想到github的readme支持org文件，于是创建一个repository,在readme文件上写目录，内容都放到note文件夹下。在本地写完后直接push就ok了,简单方便。具体方法 git clone git@github.com:ltylty/blog.git

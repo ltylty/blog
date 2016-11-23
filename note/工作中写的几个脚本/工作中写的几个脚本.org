@@ -1,0 +1,124 @@
+* 一键安装整套环境
+主要用loop、eval和sed配合起来改配置文件。
+#+BEGIN_SRC shell
+#!/bin/sh
+rm -rf /usr/local/wiedu/*
+rm -rf /usr/local/tomcat/conf/Catalina/localhost/*
+service activemq stop
+/usr/local/mongodb/bin/mongod --shutdown --dbpath /usr/local/mongodb/data
+
+IP=10.50.147.99
+DB_IP=10.50.147.99
+CLOUD_IP=10.50.147.99
+CLOUD_TOMCAT_PORT=8080
+SOLR_IP=10.50.147.99
+SOLR_PORT=8080
+TOMCAT_PATH=/usr/local/tomcat
+TOMCAT_PORT=8080
+LOCALE=zh_CN
+
+servicePath=/usr/local/service
+assessmentPath=/usr/local/assessment
+schoolPath=/usr/local/school
+contentCloudPath=/usr/local/wicc
+jforumPath=/usr/local/jforum
+ulearningPath=/usr/local/ulearning
+
+for loop in $servicePath $assessmentPath $schoolPath $contentCloudPath $jforumPath $ulearningPath
+do
+	echo $loop
+	echo "-------------------------------- start -------------------------------"
+    chmod -R 755 $loop
+    PACKAGE_PATH=$loop
+	
+    for subLoop in IP DB_IP CLOUD_IP CLOUD_TOMCAT_PORT SOLR_IP SOLR_PORT TOMCAT_PATH TOMCAT_PORT LOCALE PACKAGE_PATH
+    do
+		eval sed -i "/^$subLoop/s:`eval sed -n '/^$subLoop/p' '$loop/linux/exec.sh'`:$subLoop=\$$subLoop:g" $loop/linux/exec.sh
+    done
+	
+	$loop/linux/exec.sh > /home/terminal.out
+done
+
+rm -rf /usr/local/mongodb/data /usr/local/mongodb/log
+mkdir /usr/local/mongodb/data /usr/local/mongodb/log
+touch /usr/local/mongodb/log/mongod.log
+/usr/local/mongodb/bin/mongod --fork --logappend --port 27017 --dbpath /usr/local/mongodb/data --logpath /usr/local/mongodb/log/mongod.log
+
+chmod 755 /usr/local/wiedu/ulearning/pub/exe/linux/*
+#+END_SRC
+* 清空缓存文件
+#+BEGIN_SRC shell
+find ./ -type f -name "services-cache.xml"| 
+while read -r filename; do
+echo "<root></root>" > "$filename"
+done
+#+END_SRC
+* 通过日志抓取项目中调用的接口地址和参数
+调用接口时日志格式如下：
+#+BEGIN_QUOTE
+2016-10-18 14:58:01,062 INFO [com.wistron.swpc.wh.edu.http.connect.AbstractHttpService] - <request http url -> http://10.50.147.105:8080/notification//cloudservice/notification/count.so^M
+request params:^M
+param name:recipient,param value:GRS2O0000000000000075^M
+param name:version,param value:5.0^M
+param name:appKey,param value:wiedu_application_key^M
+param name:sign,param value:E7F258659EDE53059717926D86A9A1AA7F03535C^M
+>
+#+END_QUOTE
+通过如下命令可以抓取接口调用地址，但是不能拿到参数。
+#+BEGIN_SRC sh
+awk -F"->" '/request http url ->/ {print $2 }' catalina.out | sort | uniq  
+#+END_SRC
+不太习惯shell脚本的语法，于是写了一段python
+#+BEGIN_SRC python
+import codecs
+d = {}
+flag = False
+with open('catalina.out','r',encoding="utf8") as catalina:
+    for line in catalina:
+        index = line.find("request http url");
+
+        if(index > 0):
+            key = line[index + 19:]
+            key = key.strip()
+            if((key in d) == False):
+                d[key] = "";
+                flag = True
+                continue
+
+        if(flag == True):
+            if("param" in line):
+                d[key] = d[key] + line;
+            else:
+                flag = False;
+    # import pdb; pdb.set_trace()
+
+with open('hello','w',encoding="utf8") as hello:
+    # items = d.items()
+    items = sorted(d.items())
+    for key,value in items:
+        hello.write(key)
+        hello.write(value)
+        hello.write('\n')
+
+#+END_SRC
+最终效果
+#+BEGIN_QUOTE
+http://10.50.147.105:8080/accountservice//cloudservice/api/credits/recharge/log/show.sorequest params:
+param name:fromUserId,param value:
+param name:toUserId,param value:287XB0000000000000156
+param name:payType,param value:1
+param name:startTime,param value:
+param name:endTime,param value:
+param name:appKey,param value:wiedu_application_key
+param name:sign,param value:C111AF1DD5FA83E55D8868D5A31D3CC454E00045
+
+http://10.50.147.105:8080/accountservice//cloudservice/api/credits/show.sorequest params:
+param name:tokenId,param value:01a64768-28bb-4ffd-9f55-66c5f5b1bb43
+param name:appKey,param value:wiedu_application_key
+param name:sign,param value:43C23DE1B19A3B8267D3C9F849C0BF286636F447
+
+http://10.50.147.105:8080/accountservice//cloudservice/group/create.sorequest params:
+param name:data,param value:<?xml version="1.0" encoding="utf-8"?><group id="" groupCode="" name="6666" creator="287XB0000000000000154" attr1="0" attr2="" appId="Drgo_App"></group>
+param name:appKey,param value:test_key
+param name:sign,param value:E719A541B5C4C6C7F87932F4D94E2BB177FA290E
+#+END_QUOTE
