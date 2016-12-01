@@ -1,0 +1,19 @@
+* java 中 exception 的类型。
+[[file:1.png]] 
+exception 分为 checked exception 与 unchecked exception。unchecked exception 为 runtime exception，checked exception 是 runtime exception 之外的 exception。checked exception 是写代码时必须处理的 exception，如 IOException。unchecked exception 由 Java 运行环境自动抛出，当然也可以自行捕获。
+* 异常处理方式
+- throws
+出现异常后向外抛出，程序不再向下运行，直到异常被捕获。如果一直没有被捕获则交给 jvm 处理。
+- try,catch,finally
+捕获异常，finally 之后的代码可以继续运行。
+- try,catch,throw
+#+BEGIN_SRC java
+  try {
+			  //...
+		  } catch (IOException e) {
+		  // e.printStackTrace();不建议使用，用 logger 处理更好。
+      logger.error("something error", e);
+		  throw new RuntimeException(e);
+		  }
+#+END_SRC
+将 checked exception 捕获后记录异常日志，然后转为 unchecked exception 抛出。
