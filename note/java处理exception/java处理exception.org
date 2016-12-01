@@ -1,5 +1,6 @@
 * java 中 exception 的类型。
 [[file:1.png]] 
+
 exception 分为 checked exception 与 unchecked exception。unchecked exception 为 runtime exception，checked exception 是 runtime exception 之外的 exception。checked exception 是写代码时必须处理的 exception，如 IOException。unchecked exception 由 Java 运行环境自动抛出，当然也可以自行捕获。
 * 异常处理方式
 - throws
