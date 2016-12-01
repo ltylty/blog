@@ -10,11 +10,11 @@ exception 分为 checked exception 与 unchecked exception。unchecked exception
 - try,catch,throw
 #+BEGIN_SRC java
   try {
-	//...
-	} catch (IOException e) {
-	// e.printStackTrace();不建议使用，用 logger 处理更好。
-  logger.error("something error", e);
-	throw new RuntimeException(e);
-	}
+    //...
+  } catch (IOException e) {
+    // e.printStackTrace();不建议使用，用 logger 处理更好。
+    logger.error("something error", e);
+    throw new RuntimeException(e);
+  }
 #+END_SRC
 将 checked exception 捕获后记录异常日志，然后转为 unchecked exception 抛出。
