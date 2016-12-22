@@ -1,0 +1,76 @@
+一个ajax请求时而成功，时而失败。后来在chrome控制台发现Provisional headers are shown.
+[[file:20161222_151750.jpg]]
+用 chrome://net-internals/#events 查看请求的具体信息
+#+BEGIN_SRC 
+4127: URL_REQUEST
+http://localhost:8081/drgo/coursev2/courseV2_endWatch.so
+Start Time: 2016-12-22 10:55:49.288
+
+t=2554 [st=0] +REQUEST_ALIVE  [dt=7]
+t=2554 [st=0]    URL_REQUEST_DELEGATE  [dt=0]
+t=2554 [st=0]   +URL_REQUEST_START_JOB  [dt=7]
+                 --> load_flags = 33024 (MAYBE_USER_GESTURE | VERIFY_EV_CERT)
+                 --> method = "POST"
+                 --> priority = "MEDIUM"
+                 --> upload_id = "0"
+                 --> url = "http://localhost:8081/drgo/coursev2/courseV2_endWatch.so"
+t=2555 [st=1]      URL_REQUEST_DELEGATE  [dt=0]
+t=2555 [st=1]      HTTP_CACHE_GET_BACKEND  [dt=0]
+t=2555 [st=1]     +HTTP_STREAM_REQUEST  [dt=0]
+t=2555 [st=1]        HTTP_STREAM_REQUEST_STARTED_JOB
+                     --> source_dependency = 4129 (HTTP_STREAM_JOB)
+t=2555 [st=1]        HTTP_STREAM_REQUEST_BOUND_TO_JOB
+                     --> source_dependency = 4129 (HTTP_STREAM_JOB)
+t=2555 [st=1]     -HTTP_STREAM_REQUEST
+t=2555 [st=1]     +UPLOAD_DATA_STREAM_INIT  [dt=0]
+t=2555 [st=1]        UPLOAD_DATA_STREAM_INIT  [dt=0]
+                     --> is_chunked = false
+                     --> net_error = 0 (?)
+                     --> total_size = 53
+t=2555 [st=1]     -UPLOAD_DATA_STREAM_INIT
+                   --> is_chunked = false
+                   --> net_error = 0 (?)
+                   --> total_size = 53
+t=2555 [st=1]     +HTTP_TRANSACTION_SEND_REQUEST  [dt=1]
+t=2555 [st=1]        HTTP_TRANSACTION_SEND_REQUEST_HEADERS
+                     --> POST /drgo/coursev2/courseV2_endWatch.so HTTP/1.1
+                         Host: localhost:8081
+                         Connection: keep-alive
+                         Content-Length: 53
+                         Accept: text/plain, */*; q=0.01
+                         Origin: http://localhost:8081
+                         X-Requested-With: XMLHttpRequest
+                         User-Agent: Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36
+                         Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+                         Referer: http://localhost:8081/drgo/coursev2/courseV2_watchMovie.so?courseInfo.movieUrl=http://10.5.93.13/ckplayer/player.html?movie=wicc94775191-eda8-494a-a2c8-d3a78898d4e3.mp4&fileId=F0SLIH21352&showType=iframe&courseInfo.contentId=C0SLIH5354
+                         Accept-Encoding: gzip, deflate, br
+                         Accept-Language: zh-CN,zh;q=0.8,en-US;q=0.6,en;q=0.4
+                         Cookie: [120 bytes were stripped]
+t=2556 [st=2]        HTTP_TRANSACTION_SEND_REQUEST_BODY
+                     --> did_merge = false
+                     --> is_chunked = false
+                     --> length = 53
+t=2556 [st=2]       +UPLOAD_DATA_STREAM_READ  [dt=0]
+                     --> current_position = 0
+t=2556 [st=2]          UPLOAD_DATA_STREAM_READ  [dt=0]
+                       --> current_position = 0
+t=2556 [st=2]       -UPLOAD_DATA_STREAM_READ
+t=2556 [st=2]        UPLOAD_DATA_STREAM_READ  [dt=0]
+                     --> current_position = 53
+t=2556 [st=2]     -HTTP_TRANSACTION_SEND_REQUEST
+t=2556 [st=2]     +HTTP_TRANSACTION_READ_HEADERS  [dt=5]
+t=2556 [st=2]       +HTTP_STREAM_PARSER_READ_HEADERS  [dt=5]
+t=2560 [st=6]          CANCELLED
+t=2561 [st=7]   -URL_REQUEST_START_JOB
+                 --> net_error = -3 (ERR_ABORTED)
+t=2561 [st=7]    URL_REQUEST_DELEGATE  [dt=0]
+t=2561 [st=7] -REQUEST_ALIVE
+#+END_SRC
+出错在这几行
+#+BEGIN_SRC 
+t=2556 [st=2]       +HTTP_STREAM_PARSER_READ_HEADERS  [dt=5]
+t=2560 [st=6]          CANCELLED
+t=2561 [st=7]   -URL_REQUEST_START_JOB
+                 --> net_error = -3 (ERR_ABORTED)
+#+END_SRC
+意思是说请求取消了，但是一个普普通通的ajax请求怎么会被取消？进一步发现，ajax是在onunload事件触发后执行的，也就是在页面关闭的时候发送的请求。浏览器检查到页面被关闭就会认为这个请求没有作用然后取消请求。解决办法就是把ajax设置为同步async : false,这样就会让请求完成之后关闭浏览器。问题终于解决了！

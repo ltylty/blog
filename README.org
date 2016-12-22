@@ -1,3 +1,5 @@
+- <2016-12-22 周四>  [[file:note/%E8%A7%A3%E5%86%B3%20Provisional%20headers%20are%20shown/%E8%A7%A3%E5%86%B3%20Provisional%20headers%20are%20shown.org][解决 Provisional headers are shown]] =ajax:http=
+- <2016-12-19 周一> javaweb 项目管理 
 - <2016-12-01 周四> [[file:note/java%E5%A4%84%E7%90%86exception/java%E5%A4%84%E7%90%86exception.org][java 处理 exception]] =java:exception=
 - <2016-11-23 周三> [[file:note/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%86%99%E7%9A%84%E5%87%A0%E4%B8%AA%E8%84%9A%E6%9C%AC/%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%86%99%E7%9A%84%E5%87%A0%E4%B8%AA%E8%84%9A%E6%9C%AC.org][工作中用 shell，python 写的几个脚本]] =python:shell=
 - <2016-11-22 周二> [[file:note/%E4%BD%BF%E7%94%A8emacs%E3%80%81orgmode%E3%80%81github%E8%AE%B0%E5%BD%95%E6%96%87%E5%AD%97/%E4%BD%BF%E7%94%A8emacs%E3%80%81orgmode%E3%80%81github%E8%AE%B0%E5%BD%95%E6%96%87%E5%AD%97.org][使用 emacs、orgmode、github 记录文字]] =emacs:github=
