@@ -1,0 +1,31 @@
+* 代码规范
+codeview主要看代码结构，更细致的代码规范可以用findBug排除一些bug，用checkStyle统一格式，用jautodoc生成文档注释。在实际项目中这些工具也不是十全十美，但是可以减少很多项目管理的工作量。
+** findBug
+** checkStyle
+** jautodoc
+* svn使用
+大部分开发主要在trunk上进行，部分功能需要在新增的branch上进行，每次的里程碑版本打tag。但是不能保证tag中的代码100%没有bug，此时trunk已经在开发新的功能，所以只能在tag上面改，然后将改动的代码合并到trunk。这里记录一下实际工作中将tag合并到trunk的最佳实践。
+1. 在tag中提交
+2. 在trunk合并刚刚的提交,合并之前preview，并且在comment中注明reversion。
+3. [[file:20161229_152417.jpg]] 
+4. 如果两边改动同一个文件，并且要保持两边文件不一致。就需要手动合并。具体来说就是在trunk中working文件的基础上将tag中改动的部分手动加到trunk中。
+* 删除无用的代码
+ 代码越写越多，累计的dead code也越来越多。UCDetector插件可以分析出项目中所有没有引用的类、方法、变量。但是action或controller这一部分的方法是在界面调用的，所以这部分的代码分析不出来。所以可以使用代码覆盖率工具来找出哪些方法被调用，项目完整测试后依然没有被调用的代码就可以视为无用的代码。除了使用覆盖率工具之外还可以用脚本分析日志来获取action中被调用的方法。 
+* 代码覆盖率
+** java
+   EclEmma是JaCoCo的eclipse插件，JaCoCo 也可以单独使用。具体方法参考官方文档。
+#+BEGIN_SRC 
+-javaagent:E:/DevTool/codeCover/jacoco/lib/jacocoagent.jar=output=tcpserver,address=127.0.0.1,port=6300
+#+END_SRC 
+** 前端
+web项目在浏览器中测试建议使用jscover中的Proxy模式并加上--local-storage参数
+*** jscover
+*** Istanbul
+* 自动化测试
+  自动化测试可以减少一些测试工作量，但不能指望它做所有的事情。自动化测试还可以和代码覆盖率、持续集成结合起来用。
+** Selenium
+ https://www.gitbook.com/book/wizardforcel/selenium-webdriver-simple-tutorial/details
+ http://www.cnblogs.com/TankXiao/p/5252754.html
+ http://www.cnblogs.com/qingchunjun/p/4208159.html
+* 持续集成
+待续
