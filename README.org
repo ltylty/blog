@@ -1,3 +1,4 @@
+- <2017-01-12 周四> 使用JSP自定义标签引入head.jsp与foot.jsp
 - <2016-12-22 周四> [[file:note/%E8%A7%A3%E5%86%B3%20Provisional%20headers%20are%20shown/%E8%A7%A3%E5%86%B3%20Provisional%20headers%20are%20shown.org][解决 Provisional headers are shown]] =ajax:http=
 - <2016-12-19 周一> [[file:note/javaweb%20%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/javaweb%20%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86.org][javaweb 项目管理]] =javaweb:svn:JaCoCo:jscover:Selenium=
 - <2016-12-01 周四> [[file:note/java%E5%A4%84%E7%90%86exception/java%E5%A4%84%E7%90%86exception.org][java 处理 exception]] =java:exception=
