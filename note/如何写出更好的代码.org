@@ -1,0 +1,16 @@
+* 健壮性
+** 数据校验
+每个方法都要做数据校验保证数据合法性。
+** 开发的时候用日志来排查错误，少用debug。
+* 可读性
+** 先写注释再写代码
+#+BEGIN_SRC java
+@Transactional
+	public Boolean edit(String termId) {
+		// 1.查出当前学期
+		// 2.若存在当前学期，将当前学期设置为历史学期
+		// 3.通过参数termId设置新的当前学期
+	  return true;
+	}
+#+END_SRC
+* 扩展性

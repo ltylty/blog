@@ -1,0 +1,14 @@
+* 核心类关系
+AuthenticationManager ProviderManager AuthenticationProvider UserDetailsService
+核心类介绍参考 http://wiki.jikexueyuan.com/project/spring-security/core-classes.html https://docs.spring.io/spring-security/site/docs/4.0.x/reference/html/core-services.html
+AuthenticationManager接口，默认实现是ProviderManager.
+ProviderManager拥有成员变量AuthenticationProvider list.
+AuthenticationProvider的常用实现daoAuthenticationProvider.
+AuthenticationProvider拥有成员变量userDetailsService passwordEncoder.
+userDetailsService的常用实现JdbcDaoImpl inMemoryDaoImpl
+* oauth2核心类
+** 授权服务 Authorization Service.
+AuthorizationEndpoint：用来作为请求者获得授权的服务，默认的URL是/oauth/authorize.
+TokenEndpoint：用来作为请求者获得令牌（Token）的服务，默认的URL是/oauth/token.
+** 资源服务 Resource Service.
+OAuth2AuthenticationProcessingFilter：用来作为认证令牌（Token）的一个处理流程过滤器。只有当过滤器通过之后，请求者才能获得受保护的资源。
