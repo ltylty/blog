@@ -2,9 +2,9 @@
 ** 流程控制
 ** 多态
 ** 集合
-** IO NIO
+** IO
 ** 多线程
-* java web 
+* java web
 ** mybatis
 ** spring
 *** spring mvc
@@ -25,6 +25,9 @@
 * 项目构建
 ** spring boot
 ** maven
+* 协同合作
+** git
+** svn
 * MQ
 * linux
 * 微服务设计 
